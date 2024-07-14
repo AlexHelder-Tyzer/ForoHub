@@ -7,7 +7,7 @@ public record DatosDetalleTopico(
         String titulo,
         String mensaje,
         LocalDateTime fechaCreacion,
-        Long idUsuario) {
+        String autor) {
 
     public DatosDetalleTopico(Topico topico){
         this(
@@ -15,7 +15,7 @@ public record DatosDetalleTopico(
                 topico.getTitulo(),
                 topico.getMensaje(),
                 topico.getFechaCreacion(),
-                topico.getAutor().getId()
+                topico.getAutor().getNombre()
         );
 
     }
