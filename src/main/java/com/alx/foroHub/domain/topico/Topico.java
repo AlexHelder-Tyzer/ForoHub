@@ -34,8 +34,6 @@ public class Topico {
         this.fechaCreacion = fecha;
         this.autor = usuario;
         this.activo = true;
-
-        //this.autor = new Usuario(datosRegistroTopico);
     }
 
     public void actualizarDatos(DatosActualizarTopico datos) {

@@ -7,7 +7,7 @@ public record DatosListaTopico(
         String titulo,
         String mensaje,
         LocalDateTime fechaCreacion,
-        String medico) {
+        String usuario) {
 
     public DatosListaTopico(Topico topico){
         this(
