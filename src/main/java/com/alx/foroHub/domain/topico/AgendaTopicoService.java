@@ -5,6 +5,8 @@ import com.alx.foroHub.infra.errors.ValidacionDeIntegridad;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.time.LocalDateTime;
+
 @Service
 public class AgendaTopicoService {
 
@@ -20,12 +22,11 @@ public class AgendaTopicoService {
         }
 
         var usuario = usuarioRepository.findById(datosRegistroTopico.idUsuario()).get();
-        var topico = new Topico(
+        Topico topico = new Topico(
                 datosRegistroTopico.titulo(),
                 datosRegistroTopico.mensaje(),
-                datosRegistroTopico.fechaCreacion(),
-                usuario
-        );
+                LocalDateTime.now(),
+                usuario);
 
         topicoRepository.save(topico);
         return new DatosDetalleTopico(topico);

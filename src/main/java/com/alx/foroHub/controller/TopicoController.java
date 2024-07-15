@@ -56,10 +56,11 @@ public class TopicoController {
         if (!topicoOptional.isPresent()){
             throw new ValidacionDeIntegridad("Topico No existente en la Base de datos");
         }
-
         Topico topicoEncontrado = topicoOptional.get();
         topicoEncontrado.actualizarDatos(datos);
 
         return ResponseEntity.ok(new DatosDetalleTopico(topicoEncontrado));
     }
+
+
 }

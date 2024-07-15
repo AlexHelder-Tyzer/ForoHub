@@ -26,12 +26,14 @@ public class Topico {
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "autor_id")
     private Usuario autor;
+    private Boolean activo;
 
     public Topico(String titulo, String mensaje, LocalDateTime fecha, Usuario usuario){
         this.titulo = titulo;
         this.mensaje = mensaje;
         this.fechaCreacion = fecha;
         this.autor = usuario;
+        this.activo = true;
 
         //this.autor = new Usuario(datosRegistroTopico);
     }
