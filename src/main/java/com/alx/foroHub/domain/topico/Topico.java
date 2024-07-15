@@ -46,4 +46,8 @@ public class Topico {
             this.mensaje = datos.mensaje();
         }
     }
+
+    public void desactivarPaciente() {
+        this.activo = false;
+    }
 }

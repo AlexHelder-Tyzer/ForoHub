@@ -62,5 +62,16 @@ public class TopicoController {
         return ResponseEntity.ok(new DatosDetalleTopico(topicoEncontrado));
     }
 
+    @DeleteMapping("/{id}")
+    @Transactional
+    public ResponseEntity eliminarTopico(@PathVariable Long id){
+        Optional<Topico> topicoOptional = topicoRepository.findById(id);
+        if (!topicoOptional.isPresent()){
+            throw new ValidacionDeIntegridad("Topico No existente en la Base de datos");
+        }
+        Topico topico = topicoOptional.get();
+        topico.desactivarPaciente();
+        return ResponseEntity.noContent().build();
+    }
 
 }
