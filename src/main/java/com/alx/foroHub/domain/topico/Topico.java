@@ -35,4 +35,13 @@ public class Topico {
 
         //this.autor = new Usuario(datosRegistroTopico);
     }
+
+    public void actualizarDatos(DatosActualizarTopico datos) {
+        if (datos.titulo() != null){
+            this.titulo = datos.titulo();
+        }
+        if (datos.mensaje() != null){
+            this.mensaje = datos.mensaje();
+        }
+    }
 }

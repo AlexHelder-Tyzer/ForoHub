@@ -1,6 +1,7 @@
 package com.alx.foroHub.controller;
 
 import com.alx.foroHub.domain.topico.*;
+import com.alx.foroHub.infra.errors.ValidacionDeIntegridad;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
@@ -9,7 +10,8 @@ import org.springframework.data.web.PageableDefault;
 import org.springframework.http.ResponseEntity;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.*;
-import org.springframework.web.util.UriComponentsBuilder;
+
+import java.util.Optional;
 
 @RestController
 @RequestMapping("/topicos")
@@ -45,5 +47,19 @@ public class TopicoController {
     public ResponseEntity retornarDetalleTopico(@PathVariable Long id){
         Topico topico = topicoRepository.getReferenceById(id);
         return ResponseEntity.ok(new DatosDetalleTopico(topico));
+    }
+
+    @PutMapping("/{id}")
+    @Transactional
+    public ResponseEntity actualizarTopico(@PathVariable Long id, @RequestBody @Valid DatosActualizarTopico datos){
+        Optional<Topico> topicoOptional = topicoRepository.findById(id);
+        if (!topicoOptional.isPresent()){
+            throw new ValidacionDeIntegridad("Topico No existente en la Base de datos");
+        }
+
+        Topico topicoEncontrado = topicoOptional.get();
+        topicoEncontrado.actualizarDatos(datos);
+
+        return ResponseEntity.ok(new DatosDetalleTopico(topicoEncontrado));
     }
 }
