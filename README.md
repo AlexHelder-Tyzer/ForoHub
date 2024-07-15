@@ -78,7 +78,8 @@ Dependencia adicional a agregar para Autenticacion:
 6. Tests en Postman
 
 - Test listar Topicos
-![image](https://github.com/user-attachments/assets/53179ac3-5d6e-4eee-abcb-df8f22902930)
+![image](https://github.com/user-attachments/assets/7c0b68de-2ed0-4c70-a0ed-cfeab19e42b6)
+
 - Registrar topico
 ![image](https://github.com/user-attachments/assets/10db395a-648e-4815-8983-a3c783c3ef53)
 
